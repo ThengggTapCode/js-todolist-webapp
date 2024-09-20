@@ -1,0 +1,28 @@
+.light-mode {
+    background-color: rgba(240, 240, 240, 1);
+    color: rgba(72, 75, 106, 1);
+}
+.light-mode .container {
+    background-color: rgba(228, 229, 241, 1);
+}
+.light-mode input, .light-mode button {
+    background-color: rgba(240, 240, 240, 1);
+    color: rgba(72, 75, 106, 1);
+    border: 2px solid rgba(72, 75, 106, 1);
+}
+.light-mode input::placeholder {
+    color: rgba(72, 75, 106, 1);
+}
+.light-mode ul {
+    background-color: rgba(188, 189, 201, 1);
+}
+.light-mode ul li{
+    background-color: rgba(147, 148, 165, 1);
+    color: rgba(228, 229, 241, 1);
+}
+.light-mode ul li.checked{
+    color: rgba(188, 189, 201, 1)
+}
+.light-mode li i {
+    color: rgba(228, 229, 241, 1);
+}
