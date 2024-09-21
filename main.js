@@ -1,6 +1,9 @@
+const body = document.querySelector('body');
 const input = document.getElementById('input');
 const taskList = document.getElementById('task-list');
 const emptyInputNoti = document.getElementById('empty-input-noti');
+const uiToggle = document.getElementById('ui-toggle');
+
 // add new task
 const addNewTask = () => {
     const inputValue = input.value;
@@ -15,7 +18,9 @@ const addNewTask = () => {
 
     // add new task to task list
     const newTask = document.createElement('li');
-    newTask.textContent = inputValue;
+    const taskName = document.createElement('p');
+    taskName.textContent = inputValue;
+    newTask.appendChild(taskName);
     taskList.appendChild(newTask);
 
     // add check task button
@@ -32,6 +37,7 @@ const addNewTask = () => {
 
     // clear input value
     input.value = '';
+    return;
 }
 // submit when enter is pressed
 input.addEventListener('keyup', (event) => {
@@ -42,31 +48,54 @@ input.addEventListener('keyup', (event) => {
 });
 
 taskList.addEventListener('click', (event) => {
+    const clickedElement = event.target;
     // checkbox
-    if (event.target.classList.contains('fa-circle')) {
+    if (clickedElement.classList.contains('fa-circle')) {
         // toggle checked class
-        event.target.parentElement.classList.toggle('checked');
+        clickedElement.parentElement.classList.toggle('checked');
 
         // change icon
-        event.target.classList.toggle('fa-circle');
-        event.target.classList.toggle('fa-circle-check');
+        clickedElement.classList.toggle('fa-circle');
+        clickedElement.classList.toggle('fa-circle-check');
         return;
     }
 
     // checked box 
-    if (event.target.classList.contains('fa-circle-check')) {
+    if (clickedElement.classList.contains('fa-circle-check')) {
         // toggle uncheck class
-        event.target.parentElement.classList.toggle('checked');
+        clickedElement.parentElement.classList.toggle('checked');
 
         // change icon
-        event.target.classList.toggle('fa-circle');
-        event.target.classList.toggle('fa-circle-check');
+        clickedElement.classList.toggle('fa-circle');
+        clickedElement.classList.toggle('fa-circle-check');
         return;
     }
 
     // delete task
-    if (event.target.classList.contains('fa-xmark')) {
-        event.target.parentElement.remove();
+    if (clickedElement.classList.contains('fa-xmark')) {
+        clickedElement.parentElement.remove();
+        return;
     }
 });
 
+uiToggle.addEventListener('click', () => {
+
+    // toggle between light and dark mode
+    body.classList.toggle('light-mode');
+    body.classList.toggle('dark-mode');
+
+
+    // change to sun icon
+    if (body.classList.contains('dark-mode')) {
+        uiToggle.classList.remove('fa-moon');
+        uiToggle.classList.add('fa-sun');
+        return;
+    }
+
+    // change to moon icon
+    if (body.classList.contains('light-mode')) {
+        uiToggle.classList.remove('fa-sun');
+        uiToggle.classList.add('fa-moon');
+        return;
+    }
+});

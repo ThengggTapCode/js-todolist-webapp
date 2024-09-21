@@ -3,9 +3,15 @@
     .container {
         width: 80%;
     }
+    ul.empty-list {
+        padding: 0 40px;
+    }
 }
 /* tablets & larger phones */
 @media screen and (max-width: 767px) {
+    .container {
+        height: 50%;
+    }
     h1 {
         font-size: 1.5em;
     }
@@ -26,17 +32,22 @@
     ul, .form {
         width: 90%;
     }
+    ul.empty-list {
+        font-size: 0.75em;
+    }
 }
 /* regular/smaller phones */
 @media screen and (max-width: 479px){
     .container {
         width: 90%;
-        height: 90%;
     }
     input {
         font-size: 16px;
         height: 3em;
         padding: 0 0 0 10px;
+    }
+    input::placeholder {
+        font-size: 16px;
     }
     #empty-input-noti {
         font-size: 0.5em;
@@ -48,7 +59,7 @@
         overflow: hidden;
         padding: 5px;
     }
-    i.fa-circle, i.fa-xmark, i.fa-circle-check{
+    li i.fa-circle, li i.fa-xmark, li i.fa-circle-check{
         bottom: 15px;
     }
 }
