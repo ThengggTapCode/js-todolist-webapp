@@ -40,11 +40,7 @@ button:hover {
     background-color: rgba(220, 220, 220, 1);
     color: rgba(52, 55, 86, 1);
 }
-li i.fa-xmark:hover {
-    background-color: rgba(127, 128, 145, 1);
-    border-radius: 50px;
-}
-li i.fa-circle:hover, li i.fa-circle-check:hover {
+li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-xmark:hover {
     color: rgba(208, 209, 221, 1);
 }
 /*              DARK MODE                */

@@ -62,4 +62,8 @@
     li i.fa-circle, li i.fa-xmark, li i.fa-circle-check{
         bottom: 15px;
     }
+    li i.fa-xmark {
+        right: 15px;
+        bottom: 15px;
+    }
 }

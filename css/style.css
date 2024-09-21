@@ -98,8 +98,8 @@ li i.fa-xmark {
     justify-content: center;
     align-items: center;
     right: 15px;
-    width: 40px;
-    height: 40px;
+    bottom: 15px;
+
 }
 li i.fa-circle-check {
     font-family: "Font Awesome 6 Free";
