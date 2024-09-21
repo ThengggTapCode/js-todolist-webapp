@@ -37,6 +37,7 @@ const addNewTask = () => {
 
     // clear input value
     input.value = '';
+    setTaskList();
     return;
 }
 // submit when enter is pressed
@@ -57,6 +58,7 @@ taskList.addEventListener('click', (event) => {
         // change icon
         clickedElement.classList.toggle('fa-circle');
         clickedElement.classList.toggle('fa-circle-check');
+        setTaskList();
         return;
     }
 
@@ -68,12 +70,14 @@ taskList.addEventListener('click', (event) => {
         // change icon
         clickedElement.classList.toggle('fa-circle');
         clickedElement.classList.toggle('fa-circle-check');
+        setTaskList();
         return;
     }
 
     // delete task
     if (clickedElement.classList.contains('fa-xmark')) {
         clickedElement.parentElement.remove();
+        setTaskList();
         return;
     }
 });
@@ -84,11 +88,11 @@ uiToggle.addEventListener('click', () => {
     body.classList.toggle('light-mode');
     body.classList.toggle('dark-mode');
 
-
     // change to sun icon
     if (body.classList.contains('dark-mode')) {
         uiToggle.classList.remove('fa-moon');
         uiToggle.classList.add('fa-sun');
+        setTheme(body.className);
         return;
     }
 
@@ -96,6 +100,45 @@ uiToggle.addEventListener('click', () => {
     if (body.classList.contains('light-mode')) {
         uiToggle.classList.remove('fa-sun');
         uiToggle.classList.add('fa-moon');
+        setTheme(body.className);
         return;
     }
 });
+
+// set theme to localStorage
+const setTheme = (theme) => {
+    localStorage.setItem('theme', theme);
+}
+// check for saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme) {
+    body.classList.remove(body.className);
+    body.classList.add(savedTheme);
+
+    // change to sun icon
+    if (savedTheme === 'dark-mode') {
+        uiToggle.classList.remove('fa-moon');
+        uiToggle.classList.add('fa-sun');
+    }
+    // change to moon icon
+    if (savedTheme === 'light-mode') {
+        uiToggle.classList.remove('fa-sun');
+        uiToggle.classList.add('fa-moon');
+    }
+} else {
+    // default
+    body.classList.add('light-mode');
+    uiToggle.classList.add('fa-moon');
+}
+
+// set task list to localstorage
+const setTaskList = () => {
+    localStorage.setItem('tasks', taskList.innerHTML);
+}
+
+// show saved task list
+const showTaskList = () => {
+    taskList.innerHTML = localStorage.getItem('tasks');
+}
+showTaskList();
