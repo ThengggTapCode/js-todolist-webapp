@@ -7,10 +7,10 @@ const uiToggle = document.getElementById('ui-toggle');
 // add new task
 const addNewTask = () => {
     const inputValue = input.value;
-    
+
     // if input is empty
     if (inputValue === '') {
-        emptyInputNoti.textContent = "\u274c Please don't leave this input empty";
+        emptyInputNoti.textContent = "\u26a0 Please don't leave this field empty";
         emptyInputNoti.style.display = 'block';
         return;
     }
@@ -19,7 +19,17 @@ const addNewTask = () => {
     // add new task to task list
     const newTask = document.createElement('li');
     const taskName = document.createElement('p');
+    taskName.classList.add('task-name');
     taskName.textContent = inputValue;
+
+    // only applies this style for mobile
+    let mobileResponsive = window.matchMedia('(max-width: 479px)')
+    if (mobileResponsive.matches) {
+        taskName.style.position = 'relative';
+        taskName.style.top = '10px';
+        taskName.style.left = '10px';
+    }
+
     newTask.appendChild(taskName);
     taskList.appendChild(newTask);
 
@@ -28,6 +38,12 @@ const addNewTask = () => {
     checkTag.classList.add('fa-regular');
     checkTag.classList.add('fa-circle');
     newTask.appendChild(checkTag);
+
+    // add edit task button
+    const editTask = document.createElement('i');
+    editTask.classList.add('fa-solid');
+    editTask.classList.add('fa-pencil');
+    newTask.appendChild(editTask);
 
     // add delete task button
     const deleteTask = document.createElement('i');
@@ -71,6 +87,21 @@ taskList.addEventListener('click', (event) => {
         clickedElement.classList.toggle('fa-circle');
         clickedElement.classList.toggle('fa-circle-check');
         setTaskList();
+        return;
+    }
+
+    // edit task
+    if (clickedElement.classList.contains('fa-pencil')) {
+        const taskItem = clickedElement.parentElement;
+        const taskNameElement = taskItem.querySelector('.task-name');
+        const oldTaskName = taskNameElement.textContent;
+
+        let newTaskName = prompt('Enter a new name for your task', oldTaskName);
+
+        if (newTaskName && newTaskName.trim() !== '') {
+            taskNameElement.textContent = newTaskName.trim();
+            setTaskList();
+        }
         return;
     }
 

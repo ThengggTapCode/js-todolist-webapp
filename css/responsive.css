@@ -6,6 +6,9 @@
     ul.empty-list {
         padding: 0 40px;
     }
+    #empty-input-noti {
+        font-size: 0.8em;
+    }
 }
 /* tablets & larger phones */
 @media screen and (max-width: 767px) {
@@ -32,14 +35,24 @@
     ul, .form {
         width: 90%;
     }
-    ul.empty-list {
-        font-size: 0.75em;
+    #empty-input-noti {
+        font-size: 0.7em;
+        margin: 0 20px;
+        text-align: center;
     }
 }
 /* regular/smaller phones */
 @media screen and (max-width: 479px){
     .container {
         width: 90%;
+    }
+    .ui-switch {
+        width: 30px;
+        height: 30px;
+        font-size: 25px;
+    }
+    .form {
+        padding: 0 10px;
     }
     input {
         font-size: 16px;
@@ -49,18 +62,21 @@
     input::placeholder {
         font-size: 16px;
     }
-    #empty-input-noti {
-        font-size: 0.5em;
+    ul {
+        padding: 25px 10px 10px 10px;
     }
     ul li {
-        font-size: 25px;
-        height: 5em;
+        font-size: 20px;
+        height: 4.5em;
         align-items: flex-start;
         overflow: hidden;
         padding: 5px;
     }
-    li i.fa-circle, li i.fa-xmark, li i.fa-circle-check{
+    li i.fa-circle, li i.fa-xmark, li i.fa-circle-check, li, i.fa-pencil{
         bottom: 15px;
+    }
+    li i.fa-pencil {
+        right: 40px;
     }
     li i.fa-xmark {
         right: 15px;
