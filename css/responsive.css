@@ -35,10 +35,14 @@
     ul, .form {
         width: 90%;
     }
-    #empty-input-noti {
-        font-size: 0.7em;
-        margin: 0 20px;
-        text-align: center;
+    ul li {
+        font-size: 0.80em;
+    }
+    li p {
+        white-space: nowrap;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 /* regular/smaller phones */
@@ -81,5 +85,10 @@
     li i.fa-xmark {
         right: 15px;
         bottom: 15px;
+    }
+    li .task-name {
+        position: relative;
+        top: 10px;
+        left: 10px;
     }
 }

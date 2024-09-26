@@ -1,33 +1,25 @@
 const body = document.querySelector('body');
 const input = document.getElementById('input');
 const taskList = document.getElementById('task-list');
-const emptyInputNoti = document.getElementById('empty-input-noti');
 const uiToggle = document.getElementById('ui-toggle');
+let untitledTasks = 0;
 
 // add new task
 const addNewTask = () => {
     const inputValue = input.value;
-
-    // if input is empty
-    if (inputValue === '') {
-        emptyInputNoti.textContent = "\u26a0 Please don't leave this field empty";
-        emptyInputNoti.style.display = 'block';
-        return;
-    }
-    emptyInputNoti.style.display = 'none'; // disable empty input notification
-
+    
     // add new task to task list
     const newTask = document.createElement('li');
     const taskName = document.createElement('p');
     taskName.classList.add('task-name');
-    taskName.textContent = inputValue;
 
-    // only applies this style for mobile
-    let mobileResponsive = window.matchMedia('(max-width: 479px)')
-    if (mobileResponsive.matches) {
-        taskName.style.position = 'relative';
-        taskName.style.top = '10px';
-        taskName.style.left = '10px';
+    // set default name if input is empty
+    if (inputValue === '') {
+        untitledTasks += 1;
+        taskName.innerText = `Untitled #${untitledTasks}`;
+    } else {
+        untitledTasks = 0;
+        taskName.innerText = inputValue;
     }
 
     newTask.appendChild(taskName);
@@ -108,6 +100,7 @@ taskList.addEventListener('click', (event) => {
     // delete task
     if (clickedElement.classList.contains('fa-xmark')) {
         clickedElement.parentElement.remove();
+        untitledTasks = 0;
         setTaskList();
         return;
     }
