@@ -23,6 +23,7 @@ body {
 
 .ui-switch {
     position: absolute;
+    border-radius: 50px;
     top: 15px;
     left: 15px;
     width: 50px;
@@ -30,6 +31,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.2s background-color, color;
 }
 i, button {
     cursor: pointer;
@@ -69,6 +71,11 @@ ul {
     list-style: none;
     overflow: auto;
 }
+ul.empty-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 ul li {
     position: relative;
     display: flex;
@@ -85,21 +92,27 @@ ul li.checked {
 li i {
     font-size: 0.9em;
     position: absolute;
+    transition: 0.2s color;
 }
 li i.fa-circle, li i.fa-circle-check {
     left: 15px;
 }
 li i.fa-pencil {
-    right: 50px;
+    right: 55px;
 }
-li i.fa-xmark {
+li i.fa-trash {
     display: flex;
     justify-content: center;
     align-items: center;
     right: 15px;
-    bottom: 15px;
 }
 li i.fa-circle-check {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
+}
+li p, ul p {
+    white-space: nowrap;
+    max-width: 85%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

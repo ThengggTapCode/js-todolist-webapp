@@ -9,6 +9,9 @@
     #empty-input-noti {
         font-size: 0.8em;
     }
+    li p {
+        max-width: 75%;
+    }
 }
 /* tablets & larger phones */
 @media screen and (max-width: 767px) {
@@ -39,10 +42,7 @@
         font-size: 0.80em;
     }
     li p {
-        white-space: nowrap;
-        max-width: 150px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        max-width: 65%;
     }
 }
 /* regular/smaller phones */
@@ -76,13 +76,13 @@
         overflow: hidden;
         padding: 5px;
     }
-    li i.fa-circle, li i.fa-xmark, li i.fa-circle-check, li, i.fa-pencil{
+    li i.fa-circle, li i.fa-trash, li i.fa-circle-check, li, i.fa-pencil{
         bottom: 15px;
     }
     li i.fa-pencil {
         right: 40px;
     }
-    li i.fa-xmark {
+    li i.fa-trash {
         right: 15px;
         bottom: 15px;
     }
@@ -90,5 +90,8 @@
         position: relative;
         top: 10px;
         left: 10px;
+    }
+    li p {
+        max-width: 90%;
     }
 }

@@ -40,7 +40,7 @@ button:hover {
     background-color: rgba(220, 220, 220, 1);
     color: rgba(52, 55, 86, 1);
 }
-li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-xmark:hover {
+li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-pencil:hover, li i.fa-trash:hover {
     color: rgba(208, 209, 221, 1);
 }
 
@@ -91,7 +91,7 @@ li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-xmark:hover {
 .dark-mode .ui-switch:hover {
     background-color: rgba(33, 59, 62, 1);
 }
-.dark-mode li i.fa-circle:hover, .dark-mode li i.fa-circle-check:hover, .dark-mode li i.fa-pencil:hover, .dark-mode li i.fa-xmark:hover {
+.dark-mode li i.fa-circle:hover, .dark-mode li i.fa-circle-check:hover, .dark-mode li i.fa-pencil:hover, .dark-mode li i.fa-trash:hover {
     color: rgba(182, 190, 177, 1);
 }
 

@@ -3,6 +3,7 @@ const input = document.getElementById('input');
 const taskList = document.getElementById('task-list');
 const uiToggle = document.getElementById('ui-toggle');
 let untitledTasks = 0;
+uiToggle.setAttribute('title', 'Toggle Dark mode');
 
 // add new task
 const addNewTask = () => {
@@ -17,9 +18,11 @@ const addNewTask = () => {
     if (inputValue === '') {
         untitledTasks += 1;
         taskName.innerText = `Untitled #${untitledTasks}`;
+        newTask.setAttribute('title', `Untitled #${untitledTasks}`);
     } else {
         untitledTasks = 0;
         taskName.innerText = inputValue;
+        newTask.setAttribute('title', inputValue);
     }
 
     newTask.appendChild(taskName);
@@ -29,18 +32,21 @@ const addNewTask = () => {
     const checkTag = document.createElement('i');
     checkTag.classList.add('fa-regular');
     checkTag.classList.add('fa-circle');
+    checkTag.setAttribute('title', 'Check Task');
     newTask.appendChild(checkTag);
 
     // add edit task button
     const editTask = document.createElement('i');
     editTask.classList.add('fa-solid');
     editTask.classList.add('fa-pencil');
+    editTask.setAttribute('title', 'Edit Task');
     newTask.appendChild(editTask);
 
     // add delete task button
     const deleteTask = document.createElement('i');
     deleteTask.classList.add('fa-solid');
-    deleteTask.classList.add('fa-xmark');
+    deleteTask.classList.add('fa-trash');
+    deleteTask.setAttribute('title', 'Delete Task');
     newTask.appendChild(deleteTask);
 
     // clear input value
@@ -62,6 +68,7 @@ taskList.addEventListener('click', (event) => {
     if (clickedElement.classList.contains('fa-circle')) {
         // toggle checked class
         clickedElement.parentElement.classList.toggle('checked');
+        clickedElement.setAttribute('title', 'Uncheck Task');
 
         // change icon
         clickedElement.classList.toggle('fa-circle');
@@ -74,6 +81,7 @@ taskList.addEventListener('click', (event) => {
     if (clickedElement.classList.contains('fa-circle-check')) {
         // toggle uncheck class
         clickedElement.parentElement.classList.toggle('checked');
+        clickedElement.setAttribute('title', 'Check Task');
 
         // change icon
         clickedElement.classList.toggle('fa-circle');
@@ -98,7 +106,7 @@ taskList.addEventListener('click', (event) => {
     }
 
     // delete task
-    if (clickedElement.classList.contains('fa-xmark')) {
+    if (clickedElement.classList.contains('fa-trash')) {
         clickedElement.parentElement.remove();
         untitledTasks = 0;
         setTaskList();
@@ -114,6 +122,7 @@ uiToggle.addEventListener('click', () => {
 
     // change to sun icon
     if (body.classList.contains('dark-mode')) {
+        uiToggle.setAttribute('title', 'Toggle Light mode');
         uiToggle.classList.remove('fa-moon');
         uiToggle.classList.add('fa-sun');
         setTheme(body.className);
@@ -122,6 +131,7 @@ uiToggle.addEventListener('click', () => {
 
     // change to moon icon
     if (body.classList.contains('light-mode')) {
+        uiToggle.setAttribute('title', 'Toggle Dark mode');
         uiToggle.classList.remove('fa-sun');
         uiToggle.classList.add('fa-moon');
         setTheme(body.className);
