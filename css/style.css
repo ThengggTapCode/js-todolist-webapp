@@ -61,6 +61,7 @@ button {
     width: 2em;
     height: 2em;
     font-size: 1em;
+    transition: 0.2s background-color, color;
 }
 ul {
     width: 70%;
@@ -115,4 +116,17 @@ li p, ul p {
     max-width: 85%;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+#empty-list-msg {
+    font-size: 25px;
+    width: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#empty-list-msg button {
+    width: 4em;
+    border-radius: 5px;
 }

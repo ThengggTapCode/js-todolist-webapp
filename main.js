@@ -3,10 +3,47 @@ const input = document.getElementById('input');
 const taskList = document.getElementById('task-list');
 const uiToggle = document.getElementById('ui-toggle');
 let untitledTasks = 0;
+let taskCount = 0;
 uiToggle.setAttribute('title', 'Toggle Dark mode');
 
+const checkTaskCount = () => {
+    // avoid message duplicate
+    const emptyListMsg = document.querySelector('#empty-list-msg');
+    if (emptyListMsg)
+        emptyListMsg.remove();
+
+    if (taskCount === 0) {
+
+        const newDiv = document.createElement('div');
+        const newBtn = document.createElement('button');
+
+        // set inline css prop for tasklist
+        taskList.style.display = 'flex';
+        taskList.style.justifyContent = 'center';
+        taskList.style.alignItems = 'center';
+
+        // set content, attributes for elements
+        newDiv.id = 'empty-list-msg';
+        newDiv.innerText = 'No task found! Add a new one';
+        newBtn.innerText = 'Add';
+        newBtn.setAttribute('title', 'Add new task'); 
+        newBtn.setAttribute('onclick', 'addNewTask()');
+        // add element to webpage
+        newDiv.appendChild(newBtn);
+        taskList.appendChild(newDiv);
+        return;
+    }
+    // remove message
+    if (emptyListMsg)
+        emptyListMsg.remove();
+    taskList.style.display = 'block';
+    return;
+}
 // add new task
 const addNewTask = () => {
+    taskCount += 1;
+    checkTaskCount();
+    setTaskCount();
     const inputValue = input.value;
     
     // add new task to task list
@@ -107,6 +144,9 @@ taskList.addEventListener('click', (event) => {
 
     // delete task
     if (clickedElement.classList.contains('fa-trash')) {
+        taskCount -= 1;
+        checkTaskCount();
+        setTaskCount();
         clickedElement.parentElement.remove();
         untitledTasks = 0;
         setTaskList();
@@ -170,9 +210,23 @@ if (savedTheme) {
 const setTaskList = () => {
     localStorage.setItem('tasks', taskList.innerHTML);
 }
-
+// set task count to localstorage
+const setTaskCount = () => {
+    localStorage.setItem('taskcount', taskCount);
+    console.log(`Tasks count: ${taskCount}`);
+}
 // show saved task list
 const showTaskList = () => {
-    taskList.innerHTML = localStorage.getItem('tasks');
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks)
+        taskList.innerHTML = savedTasks;
 }
+// get task count from localstorage
+const getTaskCount = () => {
+    const savedCount = localStorage.getItem('taskcount');
+    taskCount = savedCount ? parseInt(savedCount) : 0;
+}
+console.log(`Tasks count: ${taskCount}`);
 showTaskList();
+getTaskCount();
+checkTaskCount();

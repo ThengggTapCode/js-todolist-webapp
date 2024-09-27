@@ -6,11 +6,15 @@
     ul.empty-list {
         padding: 0 40px;
     }
-    #empty-input-noti {
-        font-size: 0.8em;
-    }
     li p {
         max-width: 75%;
+    }
+    #empty-list-msg {
+        width: 90%;
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 }
 /* tablets & larger phones */
@@ -44,6 +48,10 @@
     li p {
         max-width: 65%;
     }
+    #empty-list-msg button {
+        width: 5em;
+        height: 2em;
+    }
 }
 /* regular/smaller phones */
 @media screen and (max-width: 479px){
@@ -54,6 +62,10 @@
         width: 30px;
         height: 30px;
         font-size: 25px;
+    }
+    h1 {
+        font-size: 1em;
+        margin-top: 10px;
     }
     .form {
         padding: 0 10px;
@@ -93,5 +105,12 @@
     }
     li p {
         max-width: 90%;
+    }
+    #empty-list-msg {
+        font-size: 0.5em;
+        gap: 10px;
+    }
+    ::-webkit-scrollbar {
+        width: 7px;
     }
 }
