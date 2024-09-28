@@ -25,8 +25,17 @@ ul li{
     background-color: rgba(147, 148, 165, 1);
     color: rgba(228, 229, 241, 1);
 }
-ul li.checked{
+ul li.pinned, ul li.pinned * {
+    color: rgba(248, 249, 251, 1);
+}
+ul li.pinned {
+    background-color: rgba(167, 168, 185, 1);
+}
+ul li.checked, ul li.checked *{
     color: rgba(188, 189, 201, 1)
+}
+ul li.checked {
+    background-color: rgba(127, 128, 145, 1);
 }
 li i {
     color: rgba(228, 229, 241, 1);
@@ -40,10 +49,12 @@ button:hover {
     background-color: rgba(220, 220, 220, 1);
     color: rgba(52, 55, 86, 1);
 }
-li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-pencil:hover, li i.fa-trash:hover {
+li i.fa-circle:hover, li i.fa-circle-check:hover,
+li i.fa-pencil:hover, li i.fa-trash:hover,
+li i.fa-thumbtack:hover, li i.fa-thumbtack-slash:hover {
     color: rgba(208, 209, 221, 1);
 }
-#empty-list-msg * {
+#empty-list-msg, #empty-list-msg * {
     color: rgba(122, 125, 156, 1);
     border-color: rgba(122, 125, 156, 1);
 }
@@ -85,8 +96,17 @@ li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-pencil:hover, li i.fa-
     background-color: rgba(73, 99, 102, 1);
     color: rgba(202, 210, 197, 1);
 }
-.dark-mode ul li.checked {
+.dark-mode ul li.pinned, .dark-mode ul li.pinned * {
+    color: rgba(222, 230, 217, 1);
+}
+.dark-mode ul li.pinned {
+    background-color: rgba(93, 119, 122, 1);
+}
+.dark-mode ul li.checked, .dark-mode ul li.checked * {
     color: rgba(152, 160, 147, 1);
+}
+.dark-mode ul li.checked {
+    background-color: rgba(53, 79, 82, 1);
 }
 .dark-mode li i {
     color: rgba(202, 210, 197, 1);
@@ -98,11 +118,13 @@ li i.fa-circle:hover, li i.fa-circle-check:hover, li i.fa-pencil:hover, li i.fa-
 .dark-mode .ui-switch:hover {
     background-color: rgba(33, 59, 62, 1);
 }
-.dark-mode li i.fa-circle:hover, .dark-mode li i.fa-circle-check:hover, .dark-mode li i.fa-pencil:hover, .dark-mode li i.fa-trash:hover {
+.dark-mode li i.fa-circle:hover, .dark-mode li i.fa-circle-check:hover,
+.dark-mode li i.fa-pencil:hover, .dark-mode li i.fa-trash:hover,
+.dark-mode li i.fa-thumbtack:hover, .dark-mode li i.fa-thumbtack-slash:hover {
     color: rgba(182, 190, 177, 1);
 }
 
-.dark-mode #empty-list-msg, .dark-mode #empty-list-msg button {
+.dark-mode #empty-list-msg, .dark-mode #empty-list-msg * {
     color: rgba(152, 160, 147, 1);
     border-color: rgba(152, 160, 147, 1);
 }

@@ -86,9 +86,13 @@ ul li {
     padding-left: 60px;
     border-radius: 10px;
     word-wrap: break-word;
+    transition: 0.2s background-color, color;
 }
 ul li.checked {
     text-decoration: line-through;
+}
+ul li.pinned {
+    margin: 20px 10px 50px 10px;
 }
 li i {
     font-size: 0.9em;
@@ -97,6 +101,9 @@ li i {
 }
 li i.fa-circle, li i.fa-circle-check {
     left: 15px;
+}
+li i.fa-thumbtack, li i.fa-thumbtack-slash {
+    right: 100px;
 }
 li i.fa-pencil {
     right: 55px;
@@ -113,7 +120,7 @@ li i.fa-circle-check {
 }
 li p, ul p {
     white-space: nowrap;
-    max-width: 85%;
+    max-width: 75%;
     overflow: hidden;
     text-overflow: ellipsis;
 }

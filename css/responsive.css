@@ -7,7 +7,7 @@
         padding: 0 40px;
     }
     li p {
-        max-width: 75%;
+        max-width: 60%;
     }
     #empty-list-msg {
         width: 90%;
@@ -20,7 +20,7 @@
 /* tablets & larger phones */
 @media screen and (max-width: 767px) {
     .container {
-        height: 50%;
+        height: 80%;
     }
     h1 {
         font-size: 1.5em;
@@ -42,11 +42,15 @@
     ul, .form {
         width: 90%;
     }
+    ul {
+        height: 100%;
+    }
     ul li {
         font-size: 0.80em;
+        padding-left: 50px;
     }
     li p {
-        max-width: 65%;
+        max-width: 50%;
     }
     #empty-list-msg button {
         width: 5em;
@@ -88,10 +92,13 @@
         overflow: hidden;
         padding: 5px;
     }
-    li i.fa-circle, li i.fa-trash, li i.fa-circle-check, li, i.fa-pencil{
+    li i.fa-circle, li i.fa-trash, li i.fa-circle-check, li, i.fa-pencil, li i.fa-thumbtack, li i.fa-thumbtack-slash{
         bottom: 15px;
     }
-    li i.fa-pencil {
+    li i.fa-thumbtack, li i.fa-thumbtack-slash {
+        right: 67px;
+    }
+    li i.fa-pencil{
         right: 40px;
     }
     li i.fa-trash {

@@ -72,6 +72,13 @@ const addNewTask = () => {
     checkTag.setAttribute('title', 'Check Task');
     newTask.appendChild(checkTag);
 
+    // add pin tag button
+    const pinTask = document.createElement('i');
+    pinTask.classList.add('fa-solid');
+    pinTask.classList.add('fa-thumbtack');
+    pinTask.setAttribute('title', 'Pin Task')
+    newTask.appendChild(pinTask);
+
     // add edit task button
     const editTask = document.createElement('i');
     editTask.classList.add('fa-solid');
@@ -102,27 +109,21 @@ input.addEventListener('keyup', (event) => {
 taskList.addEventListener('click', (event) => {
     const clickedElement = event.target;
     // checkbox
-    if (clickedElement.classList.contains('fa-circle')) {
+    if (clickedElement.classList.contains('fa-circle') || clickedElement.classList.contains('fa-circle-check')) {
         // toggle checked class
         clickedElement.parentElement.classList.toggle('checked');
-        clickedElement.setAttribute('title', 'Uncheck Task');
 
-        // change icon
+        
+        // toggle icon
         clickedElement.classList.toggle('fa-circle');
         clickedElement.classList.toggle('fa-circle-check');
-        setTaskList();
-        return;
-    }
 
-    // checked box 
-    if (clickedElement.classList.contains('fa-circle-check')) {
-        // toggle uncheck class
-        clickedElement.parentElement.classList.toggle('checked');
-        clickedElement.setAttribute('title', 'Check Task');
+        // toggle between 'title' attribute
+        if (clickedElement.classList.contains('fa-circle-check'))
+            clickedElement.setAttribute('title' , 'Uncheck Task');
+        else
+            clickedElement.setAttribute('title', 'Check Task');
 
-        // change icon
-        clickedElement.classList.toggle('fa-circle');
-        clickedElement.classList.toggle('fa-circle-check');
         setTaskList();
         return;
     }
@@ -139,6 +140,31 @@ taskList.addEventListener('click', (event) => {
             taskNameElement.textContent = newTaskName.trim();
             setTaskList();
         }
+        return;
+    }
+
+    // pin task
+    if (clickedElement.classList.contains('fa-thumbtack') || clickedElement.classList.contains('fa-thumbtack-slash')) {
+
+        const liTag = clickedElement.parentElement;
+        // toggle between 'pinned' class in li tag
+        liTag.classList.toggle('pinned');
+
+        // toggle icons
+        clickedElement.classList.toggle('fa-thumbtack');
+        clickedElement.classList.toggle('fa-thumbtack-slash');
+
+        // CODE HERE
+
+        // toggle between 'title' attribute & pin task on top
+        if (clickedElement.classList.contains('fa-thumbtack-slash')) {
+            clickedElement.setAttribute('title', 'Unpin Task');
+            taskList.insertBefore(liTag, taskList.firstChild)
+        }
+        else {
+            clickedElement.setAttribute('title', 'Pin Tag');
+        }
+        setTaskList();
         return;
     }
 
@@ -213,7 +239,6 @@ const setTaskList = () => {
 // set task count to localstorage
 const setTaskCount = () => {
     localStorage.setItem('taskcount', taskCount);
-    console.log(`Tasks count: ${taskCount}`);
 }
 // show saved task list
 const showTaskList = () => {
@@ -226,7 +251,6 @@ const getTaskCount = () => {
     const savedCount = localStorage.getItem('taskcount');
     taskCount = savedCount ? parseInt(savedCount) : 0;
 }
-console.log(`Tasks count: ${taskCount}`);
 showTaskList();
 getTaskCount();
 checkTaskCount();
