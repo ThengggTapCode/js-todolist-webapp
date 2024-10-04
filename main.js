@@ -180,7 +180,7 @@ taskList.addEventListener('click', (event) => {
     }
 });
 
-uiToggle.addEventListener('click', () => {
+uiToggle.parentElement.addEventListener('click', () => {
 
     // toggle between light and dark mode
     body.classList.toggle('light-mode');
